@@ -18,6 +18,7 @@ return new class extends Migration
 
             $table->morphs('imageable');
 
+
             $table->timestamps();
         });
     }
