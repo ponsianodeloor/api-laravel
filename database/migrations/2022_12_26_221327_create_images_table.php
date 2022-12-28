@@ -18,6 +18,8 @@ return new class extends Migration
 
             $table->morphs('imageable');
 
+            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+
 
             $table->timestamps();
         });
