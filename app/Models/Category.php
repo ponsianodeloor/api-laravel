@@ -53,7 +53,8 @@ class Category extends Model
 
         foreach ($filters as $filter => $value){
             if ($allow_filter->contains($filter)){
-                $query->where($filter, $value);
+                //$query->where($filter, $value);
+                $query->where($filter, 'LIKE','%'.$value.'%');
             }
         }
     }
