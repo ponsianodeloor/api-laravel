@@ -23,6 +23,7 @@ Route::controller(UserController::class)->group(function (){
 Route::controller(CategoryController::class)->group(function (){
     Route::get('/categories/', 'index')->name('api.v1.categories.index');
     Route::get('/categories_filter/', 'indexScopeFilter')->name('api.v1.categories.index_scope_filter');
+    Route::get('/categories_sort/', 'indexScopeSort')->name('api.v1.categories.index_scope_sort');
     Route::get('/categories/{category}', 'show')->name('api.v1.categories.show');
     Route::get('/categories_posts/{category}', 'showPosts')->name('api.v1.categories.show_posts');
     Route::get('/categories_posts_user/{category}', 'showPostsUser')->name('api.v1.categories.show_posts_user');

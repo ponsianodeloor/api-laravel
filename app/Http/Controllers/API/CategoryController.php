@@ -19,6 +19,14 @@ class CategoryController extends Controller
 
         return $categories;
     }
+    public function indexScopeSort(){
+        $categories = Category::included()
+            ->filter()
+            ->sort()
+            ->get();
+
+        return $categories;
+    }
 
     public function create(){
 
