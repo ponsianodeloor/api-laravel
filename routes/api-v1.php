@@ -25,6 +25,7 @@ Route::controller(CategoryController::class)->group(function (){
     Route::get('/categories/{category}', 'show')->name('api.v1.categories.show');
     Route::get('/categories_posts/{category}', 'showPosts')->name('api.v1.categories.show_posts');
     Route::get('/categories_posts_user/{category}', 'showPostsUser')->name('api.v1.categories.show_posts_user');
+    Route::get('/categories_scopes/{category}', 'showScopes')->name('api.v1.categories.show_scopes');
 
     Route::post('/categories/', 'store')->name('api.v1.categories.store');
     Route::put('/categories/{category}', 'store')->name('api.v1.categories.update');

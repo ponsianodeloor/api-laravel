@@ -44,6 +44,11 @@ class CategoryController extends Controller
         return json_decode($category_with_posts, '200');
     }
 
+    public function showScopes($id){
+        $category = Category::included()->findOrFail($id);
+        return $category;
+    }
+
     public function edit(Category $category){
 
     }
