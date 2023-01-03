@@ -33,6 +33,17 @@ class CategoryController extends Controller
         return json_decode($category, 200);
     }
 
+    public function showPosts($id){
+        $category_with_posts = Category::with('posts')->findOrFail($id);
+        //$category_with_posts = Category::with(['posts', 'relacion_2'])->findOrFail($id);
+        return json_decode($category_with_posts, '200');
+    }
+
+    public function showPostsUser($id){
+        $category_with_posts = Category::with('posts.user')->findOrFail($id);
+        return json_decode($category_with_posts, '200');
+    }
+
     public function edit(Category $category){
 
     }
