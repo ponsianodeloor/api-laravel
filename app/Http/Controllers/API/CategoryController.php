@@ -14,6 +14,12 @@ class CategoryController extends Controller
         return json_decode($categories, 200);
     }
 
+    public function indexScopeFilter(){
+        $categories = Category::included()->filter()->get();
+
+        return $categories;
+    }
+
     public function create(){
 
     }
