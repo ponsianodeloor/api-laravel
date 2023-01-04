@@ -28,6 +28,15 @@ class CategoryController extends Controller
         return $categories;
     }
 
+    public function indexScopeGetOrPaginate(){
+        $categories = Category::included()
+            ->filter()
+            ->sort()
+            ->getOrPaginate();
+
+        return $categories;
+    }
+
     public function create(){
 
     }

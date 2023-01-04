@@ -81,4 +81,16 @@ class Category extends Model
             }
         }
     }
+
+    public function scopeGetOrPaginate(Builder $query){
+        if(request('perPage')){
+            $per_page = intval(request('perPage'));
+
+            if ($per_page){
+                return $query->paginate($per_page);
+            }
+        }
+
+        return $query->get();
+    }
 }
