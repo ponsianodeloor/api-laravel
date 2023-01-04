@@ -28,7 +28,7 @@ class Category extends Model
     }
 
     public function scopeIncluded(Builder $query){
-        if (empty($this->allowIncluded) || empty(request('included'))){
+        if (empty($this->allow_included) || empty(request('included'))){
             return;
         }
 
