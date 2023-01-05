@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Resources\CategoryResource;
+use App\Http\Resources\CategoryPostResource;
 
 class CategoryController extends Controller
 {
@@ -70,6 +72,17 @@ class CategoryController extends Controller
     public function showScopes($id){
         $category = Category::included()->findOrFail($id);
         return $category;
+    }
+
+    public function showResource($id){
+        $category = Category::included()->findOrFail($id);
+        //return  new CategoryResource($category);
+        return  CategoryResource::make($category);
+    }
+
+    public function showResourcePosts($id){
+        $category = Category::included()->findOrFail($id);
+        return CategoryPostResource::make($category);
     }
 
     public function edit(Category $category){

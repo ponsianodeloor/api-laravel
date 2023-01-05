@@ -29,6 +29,8 @@ Route::controller(CategoryController::class)->group(function (){
     Route::get('/categories_posts/{category}', 'showPosts')->name('api.v1.categories.show_posts');
     Route::get('/categories_posts_user/{category}', 'showPostsUser')->name('api.v1.categories.show_posts_user');
     Route::get('/categories_scopes/{category}', 'showScopes')->name('api.v1.categories.show_scopes');
+    Route::get('/categories_resource/{category}', 'showResource')->name('api.v1.categories.show_resource');
+    Route::get('/categories_resource_posts/{category}', 'showResourcePosts')->name('api.v1.categories.show_resource_posts');
 
     Route::post('/categories/', 'store')->name('api.v1.categories.store');
     Route::put('/categories/{category}', 'store')->name('api.v1.categories.update');
