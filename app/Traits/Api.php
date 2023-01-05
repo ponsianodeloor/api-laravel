@@ -1,34 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace App\Traits;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use App\Traits\Api;
+use Illuminate\Database\Eloquent\Builder;
 
-class Category extends Model
-{
-    use HasFactory, Api;
+trait Api{
 
-    protected $fillable = [
-        'name',
-        'slug'
-    ];
-
-    /**
-     * @var string[] lista blanca para obtener los scopes separados por , en la url
-     */
-    protected $allow_included = ['posts', 'posts.user'];
-    protected $allow_filter = ['id', 'name', 'slug'];
-    protected $allow_sort = ['id', 'name', 'slug'];
-
-    //relacion uno a muchos
-    public function posts(){
-        return $this->hasMany(Post::class);
-    }
-
-    //todas estas funciones pasan a app/Traits/Api.php
-    /*public function scopeIncluded(Builder $query){
+    public function scopeIncluded(Builder $query){
         if (empty($this->allow_included) || empty(request('included'))){
             return;
         }
@@ -93,5 +71,5 @@ class Category extends Model
         }
 
         return $query->get();
-    }*/
+    }
 }
