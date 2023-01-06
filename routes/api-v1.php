@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\CategoryController;
+use App\Http\Controllers\API\PostController;
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -33,10 +34,18 @@ Route::controller(CategoryController::class)->group(function (){
     Route::get('/categories_resource_posts/{category}', 'showResourcePosts')->name('api.v1.categories.show_resource_posts');
 
     Route::post('/categories/', 'store')->name('api.v1.categories.store');
-    Route::put('/categories/{category}', 'store')->name('api.v1.categories.update');
+    Route::put('/categories/{category}', 'update')->name('api.v1.categories.update');
     Route::delete('/category/{category}', 'delete')->name('api.v1.categories.delete');
 });
 
 //Route::apiResource('categories', CategoryController::class)->names('api.v1.categories');
 
+Route::controller(PostController::class)->group(function (){
+    Route::get('/posts/', 'index')->name('api.v1.posts.index');
+    Route::get('/posts/{post}', 'show')->name('api.v1.posts.show');
+
+    Route::post('/posts/', 'store')->name('api.v1.posts.index');
+    Route::put('/posts/{post}', 'update')->name('api.v1.posts.update');
+    Route::delete('/post/{post}', 'destroy')->name('api.v1.post.delete');
+});
 
